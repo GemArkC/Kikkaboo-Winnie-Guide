@@ -285,8 +285,8 @@
     <div class="col-12 col-md-10 video-block">
       <div class="video-wrapper">
         <iframe
-          id="myVimeoVideo"
-          src="https://player.vimeo.com/video/1121737226?autoplay=1&loop=1&muted=1"
+          class="mbr-embedded-video"
+          src="https://player.vimeo.com/video/1121737226?autoplay=1&loop=1&muted=0"
           width="1280"
           height="720"
           frameborder="0"
@@ -429,33 +429,7 @@
         </div>
     </div>
 </section>
-	
-<!-- Vimeo Player API -->
-<script src="https://player.vimeo.com/api/player.js"></script>
-	<script>
-	  const iframe = document.getElementById("myVimeoVideo");
-	  const player = new Vimeo.Player(iframe);
-	
-	  // IntersectionObserver to detect visibility
-	  const observer = new IntersectionObserver(
-	    (entries) => {
-	      entries.forEach((entry) => {
-	        if (entry.isIntersecting) {
-	          // When video is in view → unmute & play
-	          player.setVolume(1);
-	          player.play();
-	        } else {
-	          // When out of view → mute & pause
-	          player.setVolume(0);
-	          player.pause();
-	        }
-	      });
-	    },
-	    { threshold: 0.5 } // At least 50% visible before triggering
-	  );
-	
-	  observer.observe(iframe);
-	</script>
+
 <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="assets/smoothscroll/smooth-scroll.js"></script>
 <script src="assets/ytplayer/index.js"></script>
