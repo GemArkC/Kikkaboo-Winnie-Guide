@@ -279,18 +279,26 @@
 <section data-bs-version="5.1" class="video04 cid-uXLXXIOx1j" id="video04-1h">
     
     
-    <div class="container">
-        <div class="mbr-section-head mb-5">
-            <h4 class="mbr-section-title mbr-fonts-style mb-0 mt-0 display-1"><strong>HOW TO USE</strong></h4>
-            
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-10 video-block">
-                <div class="video-wrapper"><iframe class="mbr-embedded-video" src="https://player.vimeo.com/video/1121737226?autoplay=1&amp;loop=1" width="1280" height="720" frameborder="0" allowfullscreen></iframe></div>
-                
-            </div>
-        </div>
-    </div>
+    
+	  <div class="container">
+		  <div class="mbr-section-head mb-5">
+		    <h4 class="mbr-section-title mbr-fonts-style mb-0 mt-0 display-1"><strong>HOW TO USE</strong></h4>
+		  </div>
+	  <div class="row justify-content-center">
+	    <div class="col-12 col-md-10 video-block">
+	      <div class="video-wrapper">
+	        <iframe
+	          id="myVimeoVideo"
+	          src="https://player.vimeo.com/video/1121737226?autoplay=1&loop=1&muted=1"
+	          width="1280"
+	          height="720"
+	          frameborder="0"
+	          allow="autoplay; fullscreen"
+	          allowfullscreen
+	        ></iframe>
+	      </div>
+	    </div>
+	  </div>
 </section>
 
 <section data-bs-version="5.1" class="features6 start cid-uXMYueecTK" id="features06-1v">
@@ -429,6 +437,28 @@
 <script src="assets/ytplayer/index.js"></script>
 <script src="assets/dropdown/js/navbar-dropdown.js"></script>
 <script src="assets/theme/js/script.js"></script>
+<script>
+  const iframe = document.getElementById("myVimeoVideo");
+  const player = new Vimeo.Player(iframe);
+
+  // Use IntersectionObserver to detect visibility
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // Video is in view → unmute
+          player.setVolume(1);
+        } else {
+          // Video is out of view → mute
+          player.setVolume(0);
+        }
+      });
+    },
+    { threshold: 0.5 } // 50% visible before unmuting
+  );
+
+  observer.observe(iframe);
+</script>
 
 </body>
 </html>
